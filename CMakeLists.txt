@@ -1,9 +1,10 @@
 cmake_minimum_required(VERSION 2.8)
-project(ODE_SOLVER)
+project(FOURIER)
 message(status "${CMAKE_CURRENT_SOURCE_DIR}")
 include_directories(src include)
-set(HEADER_FILES include/Preamble.hpp include/ODE_Solver.hpp
-        include/helpers.hpp)
+set(HEADER_FILES include/test.hpp)
+
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
 find_package(Boost 1.53)
 ADD_DEFINITIONS(-DBOOST_TEST_DYN_LINK) 
 message(status "** Boost Include: ${Boost_INCLUDE_DIR}")
@@ -23,6 +24,13 @@ find_package(Armadillo REQUIRED)
 INCLUDE_DIRECTORIES(${ARMADILLO_INCLUDE_DIRS})
 LINK_DIRECTORIES(${ARMADILLO_LIBRARIES})
 
+find_package(FFTW REQUIRED)
+include_directories(${FFTW_INCLUDE_DIRS})
+set(LIBS ${LIBS} ${FFTW_LIBRARIES})
+
+#find_package(ROOT REQUIRED)
+#include_directories(${ROOT_INCLUDE_DIRS})
+#set(LIBS ${LIBS} ${ROOT_LIBRARIES})
 
 #include(FindROOT.cmake)
 #set(INCLUDE_DIRECTORIES ${ROOT_INCLUDE_DIR})
@@ -34,10 +42,9 @@ LINK_DIRECTORIES(${ARMADILLO_LIBRARIES})
 #INCLUDE_DIRECTORIES(${ROOT_INCLUDE_DIR})
 #LINK_DIRECTORIES(${ROOT_LIBRARY_DIR})
 
-add_executable(ODE_Solver src/Main.cpp src/ODE_Solver.cpp
-        src/helpers.cpp ${HEADER_FILES})
-target_link_libraries(ODE_Solver -lm ${Boost_LIBRARIES})
-target_link_libraries(ODE_Solver -lm ${ARMADILLO_LIBRARIES})
+add_executable(Fourier src/Main.cpp ${HEADER_FILES})
+target_link_libraries(Fourier -lm ${Boost_LIBRARIES}
+    ${ARMADILLO_LIBRARIES} ${LIBS})
 #target_link_libraries(ODE_solver -lm ${ROOT_LIBRARIES})
 
 find_package(Doxygen)
@@ -54,9 +61,9 @@ if (CMAKE_COMPILER_IS_GNUCXX)
     message(status "Setting GCC flags")
 
     # Remove the -g flag when not debugging
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O2 -Wall -Wextra -W -pedantic -std=c++0x -O3 -larmadillo -llapack -lblas")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O2 -Wall -Wextra -W -pedantic -std=c++0x -O3 -llapack -lblas")
 else()
     message(status "Setting MSVC flags")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /EHc-")
 endif()
-install(TARGETS ODE_Solver DESTINATION ${CMAKE_BINARY_DIR}/lib)
+install(TARGETS Fourier DESTINATION ${CMAKE_BINARY_DIR}/lib)

@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/repo/ph/NumericalRecipes/!svn/ver/120/Unit6-FFTW/cpp
+END
+fft
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/repo/ph/NumericalRecipes/!svn/ver/167/Unit6-FFTW/cpp/fft
+END
+fftresults.txt
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/repo/ph/NumericalRecipes/!svn/ver/120/Unit6-FFTW/cpp/fftresults.txt
+END
+MakePlot_cxx.d
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/repo/ph/NumericalRecipes/!svn/ver/120/Unit6-FFTW/cpp/MakePlot_cxx.d
+END
+fft.cxx
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/repo/ph/NumericalRecipes/!svn/ver/120/Unit6-FFTW/cpp/fft.cxx
+END
+MakePlot.cxx
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/repo/ph/NumericalRecipes/!svn/ver/120/Unit6-FFTW/cpp/MakePlot.cxx
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/repo/ph/NumericalRecipes/!svn/ver/167/Unit6-FFTW/cpp/Makefile
+END
+fftinput.txt
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/repo/ph/NumericalRecipes/!svn/ver/120/Unit6-FFTW/cpp/fftinput.txt
+END
